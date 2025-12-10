@@ -130,20 +130,38 @@ def init_config_interactive():
 
     # Prompt user
     print("\nWhere should figures be saved by default?")
-    print("  [1] Current working directory (default behavior)")
+    print("  [1] Create new Fycus directory (~/Fycus)")
     print("  [2] Specify a custom directory")
-    print("  [3] Cancel")
+    print("  [3] Use current working directory (default behavior)")
+    print("  [4] Cancel")
 
     while True:
-        choice = input("\nSelect [1-3]: ").strip()
+        choice = input("\nSelect [1-4]: ").strip()
 
         if choice == '1':
-            # Remove base_path from config (use default cwd behavior)
+            # Create ~/Fycus directory and set as global default
+            path = Path.home() / 'Fycus'
+
+            # Create directory if it doesn't exist
+            if not path.exists():
+                try:
+                    path.mkdir(parents=True, exist_ok=True)
+                    print(f"\nCreated directory: {path}")
+                except Exception as e:
+                    print(f"Error creating directory: {e}")
+                    print("Configuration cancelled.")
+                    return
+            else:
+                print(f"\nDirectory already exists: {path}")
+
+            # Save config
             config = current_config.copy()
-            config.pop('base_path', None)
+            config['base_path'] = str(path)
             save_config(config)
             print("\nConfiguration saved!")
-            print("Figures will be saved to the current working directory.")
+            print(f"Figures will be saved to: {path}")
+            print(f"\nYou can always override this per-project:")
+            print(f"  F = Fycus('name', base_path='/custom/path')")
             break
 
         elif choice == '2':
@@ -180,11 +198,20 @@ def init_config_interactive():
             break
 
         elif choice == '3':
+            # Remove base_path from config (use default cwd behavior)
+            config = current_config.copy()
+            config.pop('base_path', None)
+            save_config(config)
+            print("\nConfiguration saved!")
+            print("Figures will be saved to the current working directory.")
+            break
+
+        elif choice == '4':
             print("\nConfiguration cancelled.")
             return
 
         else:
-            print("Invalid choice. Please select 1, 2, or 3.")
+            print("Invalid choice. Please select 1, 2, 3, or 4.")
 
 
 def show_current_config():
