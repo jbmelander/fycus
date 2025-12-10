@@ -37,6 +37,7 @@ import matplotlib.pyplot as plt
 from fycus import Fycus
 
 # Create a figure manager for this project
+# Now, all figures from this script will be saved to YOUR_DEFAULT_FYCUS_PATH / my_project / savename.svg
 F = Fycus('my_project')
 
 # Create your plot
