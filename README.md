@@ -11,6 +11,7 @@ Fycus simplifies the process of creating publication-ready scientific figures by
 - **No more complicated paths**: Skip dealing with long, nested file paths every time you save a figure
 
 With Fycus, you can focus on your data and visualizations instead of wrestling with matplotlib configuration and file paths.
+**Note: by default, fycus saves figures as .svg files which can be opened in [Inkscape]([url](https://inkscape.org/release/inkscape-1.4.2/windows/64-bit/msi/dl/)) and then powerfully refined and/or combined into larger scientific figures**
 
 ## Installation
 
@@ -56,7 +57,7 @@ F.save('my_plot')  # Saves as SVG by default
 
 ### Size Presets
 
-Fycus provides several convenient size presets based on page width fractions:
+Fycus provides several convenient size presets based on page width fractions. The page width can be set when creating the Fycus option, but standardizes as a standard paper size with a one-inch margin:
 
 ```python
 F.QQ()  # Quarter-quarter: 1/4 width, 1/4 height
