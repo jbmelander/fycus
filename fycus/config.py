@@ -11,27 +11,27 @@ def get_config_dir():
 
     Returns:
         Path: Configuration directory path
-            - Linux: ~/.config/fygaro
-            - macOS: ~/Library/Application Support/fygaro
-            - Windows: %APPDATA%\\fygaro
+            - Linux: ~/.config/fycus
+            - macOS: ~/Library/Application Support/fycus
+            - Windows: %APPDATA%\\fycus
     """
     if sys.platform == 'win32':
-        # Windows: %APPDATA%\fygaro
+        # Windows: %APPDATA%\fycus
         base = os.getenv('APPDATA')
         if not base:
             base = Path.home() / 'AppData' / 'Roaming'
         else:
             base = Path(base)
-        return base / 'fygaro'
+        return base / 'fycus'
     elif sys.platform == 'darwin':
-        # macOS: ~/Library/Application Support/fygaro
-        return Path.home() / 'Library' / 'Application Support' / 'fygaro'
+        # macOS: ~/Library/Application Support/fycus
+        return Path.home() / 'Library' / 'Application Support' / 'fycus'
     else:
-        # Linux/Unix: ~/.config/fygaro (XDG Base Directory spec)
+        # Linux/Unix: ~/.config/fycus (XDG Base Directory spec)
         xdg_config = os.getenv('XDG_CONFIG_HOME')
         if xdg_config:
-            return Path(xdg_config) / 'fygaro'
-        return Path.home() / '.config' / 'fygaro'
+            return Path(xdg_config) / 'fycus'
+        return Path.home() / '.config' / 'fycus'
 
 
 def get_config_path():
@@ -210,7 +210,7 @@ def show_current_config():
             print("Base path: Not set (using current working directory)")
     else:
         print("\nNo configuration file found.")
-        print("Run 'fygaro init' to create one.")
+        print("Run 'fycus init' to create one.")
 
     print("\nPriority order:")
     print("  1. Constructor parameter (Fycus('name', base_path='/path'))")

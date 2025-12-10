@@ -6,7 +6,7 @@ from .config import init_config_interactive, show_current_config
 
 def print_usage():
     """Print CLI usage information."""
-    print("Usage: fygaro <command>")
+    print("Usage: fycus <command>")
     print("\nCommands:")
     print("  init       - Run interactive configuration setup")
     print("  config     - Show current configuration")
@@ -15,7 +15,7 @@ def print_usage():
 
 
 def main():
-    """Main CLI entry point for fygaro commands."""
+    """Main CLI entry point for fycus commands."""
     if len(sys.argv) < 2:
         print_usage()
         sys.exit(1)
@@ -28,7 +28,7 @@ def main():
         show_current_config()
     elif command == '--version':
         from . import __version__
-        print(f"fygaro {__version__}")
+        print(f"fycus {__version__}")
     elif command == '--help' or command == '-h':
         print_usage()
     else:

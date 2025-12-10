@@ -56,7 +56,7 @@ def setup_figure_style():
     plt.rcParams['svg.fonttype'] = 'none'  # Keep text as text (not paths)
 
 
-class Fygaro:
+class Fycus:
     """Utility class for managing scientific figures with matplotlib.
 
     Provides convenient sizing presets and automated figure exporting
@@ -76,8 +76,8 @@ class Fygaro:
     Examples
     --------
     >>> import matplotlib.pyplot as plt
-    >>> from fygaro import Fygaro 
-    >>> F = Fygaro('my_figures')
+    >>> from fycus import Fycus
+    >>> F = Fycus('my_figures')
     >>> fig, ax = plt.subplots()
     >>> ax.plot([1, 2, 3], [1, 2, 3])
     >>> F.QQ()  # Set to quarter-page size

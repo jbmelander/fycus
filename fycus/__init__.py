@@ -1,6 +1,6 @@
-"""Fygaro: Easy scientific figure generation with matplotlib."""
+"""Fycus: Easy scientific figure generation with matplotlib."""
 
-from .fygaro import Fygaro, setup_figure_style, COLORS
+from .fycus import Fycus, setup_figure_style, COLORS
 
-__all__ = ['Fygaro', 'setup_figure_style', 'COLORS']
+__all__ = ['Fycus', 'setup_figure_style', 'COLORS']
 __version__ = '0.1.0'
